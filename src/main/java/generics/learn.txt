@@ -1,0 +1,74 @@
+with using generic we can get type safety and avoid writing boilerplate code (copy pasting and changing)
+
+--> why do we need generics ?
+ we've gotten this situation where we want to use our compiler as a bit of a lock, a bit of a safeguard
+ to make sure that we can't do things like adding an integer into a String buffer and we've decided
+ that we don't wanna do that by just copy and pasting our buffer again and again and again because it
+ leaves maintenance errors.So we've used generics to try and get the best of both worlds, type safety, but without copy and paste.
+
+
+--> List is an ordered collection
+
+upper bounded
+
+List< ? extends Cls>
+
+lower bounded
+List< ? super Cls>
+
+unbounded
+List<?>
+
+
+substitution principle
+
+
+
+------------------------------------------------------------------------------------------------------
+? extends
+1. declare an upper bound for the type parameter
+2. to get data out of the parameter
+3. covariance
+
+-------------------------------------------------------------------------------------------------------
+
+
+? super
+1. declare a lower bound for the type parameter
+2. to put data into the parameter
+3. contravariance
+
+when we said that question mark extends was when we want to get data out of a parameter,
+when we want to call, say, iterator over a list or call the list dot get one or dot get zero to get
+the value out.
+
+the question mark super, on the other hand, was when we wanted to put data inot that parameter.
+
+
+
+
+how to maintain compatibility of old java code using rawtype feature of generics.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
