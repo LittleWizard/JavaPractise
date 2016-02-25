@@ -1,0 +1,6 @@
+javac -d classes -sourcepath src src/main/java/classloading/utils/Helper.java
+
+
+javac -d classes src/main/java/classloading/*.java
+
+jar cvf helper.jar com\mantiso\Helper.class

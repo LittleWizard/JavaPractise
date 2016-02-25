@@ -1,0 +1,63 @@
+-------------------------------------------------------------------------------------------------------
+
+javac -d classes -sourcepath src src/main/java/classloading/utils/Helper.java
+javac  -sourcepath src src/main/java/classloading/utils/Helper.java -d classes
+//now run it
+java -cp classes classloading.utils.Helper   // rt.jar and jars from lib\ext directory are loaded
+--------------------------------------------------------------------------------------------------------
+
+
+javac -d classes src/main/java/classloading/*.java
+
+jar cvf helper.jar com\mantiso\Helper.class
+
+java -cp classes:helper.jar lib.util.Main
+
+
+
+
+javac -sourcepath src src\com\example\Main.java   //javac also(rt.jar) use extension library folder
+                                                  //and it's loaded automatically for us by the
+                                                  //java runtime
+                                                  //so if our Main.java depends on a jar
+                                                  //say helper.jar and it's in this lib\ext
+                                                  //folder then our Main class will compile
+
+java -cp classes -Djava.ext.dirs=c:\lib com.utils.Main  //setting our extension folder at compile time
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+when an app runs by java bootstrap class loader loads all the classes from rt.jar.
+so, it we writes a class which has a same package as in rt.jar then our custom class will be replaced
+by the class from rt.jar
+
+but if we compile it with javac and provide class path where our compiled custom class is located
+then javac will compile it with our custom class
+
+
+we can actually overrides the bootstrap class path loader at least in oracle java virtual machine
+
+java -X
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+typically in an application there are more than one class loader.
+there is a hierarchy of class loaders
+there is a parent of each of the class loader apart from the base class loader.
+class loader may delegate to its parent.
+if you use builtin class loader and you derived from the builtin class loader then it's the behaviour
+you will get. delegation is up to you  if you use derived class loader.
+
+
+
+
+
+
+
+
+
+
+
+
+
